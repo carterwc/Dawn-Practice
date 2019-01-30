@@ -1,0 +1,12 @@
+
+CREATE DATABASE mooovies;
+
+USE mooovies;
+
+CREATE TABLE movies (
+  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Title VARCHAR NOT NULL,
+  releaseDate INT(11),
+  genre VARCHAR(255) NOT NULL
+);
+
