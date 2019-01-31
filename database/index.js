@@ -3,14 +3,18 @@ const mysqlConfig = require('./config.js');
 
 const connection = mysql.createConnection(mysqlConfig);
 
-
-
-// CREATE TABLE movies (
-//   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-//   Title VARCHAR NOT NULL,
-//   releaseDate INT(11),
-//   genre VARCHAR(255) NOT NULL
-// );
+var getAllMovies = function (callback) {
+  var queryString = `SELECT * FROM movies`;
+  connection.query(queryString, (error, results) => {
+    if (error) {
+      console.log(error, 'error getAllMovies');
+      callback(error, null);
+    } else {
+      console.log(results, 'Results from getAllMovies SUCCESS!');
+      callback(null, results);
+    }
+  });
+}
 
 
 
@@ -29,7 +33,6 @@ connection.connect((error) => {
   }
 });
 
-
 module.exports = {
-
+  getAllMovies
 };
